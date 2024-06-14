@@ -1,0 +1,10 @@
+* {
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: black;
+  
+}
+
+body {
+  min-height: 100vh;
+  background-color:  #0a125f; 
+}
