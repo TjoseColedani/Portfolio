@@ -1,12 +1,56 @@
+import { useState } from "react";
+import axios from 'axios'
+
 
 
 export default function ContactMe() {
+    
+    
+    const [name,setName] = useState('')
+    const [email,setEmail] = useState('')
+    const [message,setMessage] = useState('')
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+        const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+        const publicKey = import.meta.env.VITE_EMAILJS_API_KEY;
+
+
+        const data = {
+            service_id: serviceId,
+            template_id: templateId,
+            user_id: publicKey,
+            template_params: {
+                from_name: name,
+                from_email: email,
+                to_name: 'Portafolio Turi Coledani',
+                message: message,
+            }
+        };
+
+        try {
+            const res = await axios.post("https://api.emailjs.com/api/v1.0/email/send", data);
+            console.log(res.data);
+            setName('');
+            setEmail('');
+            setMessage('');
+        } catch (error) {
+            console.error(error)
+        }
+
+    }
+    
+    
+    
+    
     return (
         <div id="ContactMe">
             <div className="text-center py-4">
-            <h2 className="text-4xl font-monserrat font-bold text-white py-10">Contact Me</h2>
+                <h2 className="text-4xl font-monserrat font-bold text-white py-10">Contact Me</h2>
             </div>
-            <form className="px-4 py-2 text-left w-4/5 mx-auto">
+            <form className="px-4 py-2 text-left w-4/5 mx-auto" onSubmit={handleSubmit}>
             <div className="mb-4">
                 <label className="block text-sm mb-2" htmlFor="name"></label>
                 <input
@@ -15,6 +59,8 @@ export default function ContactMe() {
                 name="name"
                 className="w-full px-3 py-2 placeholder-custom bg-blue-800  text-white placeholder:text-white/80"
                 placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 />
             </div>
             <div className="mb-4">
@@ -25,6 +71,8 @@ export default function ContactMe() {
                 name="email"
                 className="w-full px-3 py-2 placeholder-custom bg-blue-800  text-white placeholder:text-white/80"
                 placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 />
             </div>
             <div className="mb-4">
@@ -35,6 +83,8 @@ export default function ContactMe() {
                 rows="4"
                 className="w-full px-3 py-2 placeholder-custom bg-blue-800 text-white placeholder:text-white/80"
                 placeholder="Message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
                 ></textarea>
             </div>
             <div className="text-center">
