@@ -7,6 +7,30 @@ const projects = [
     title: 'Advanced Parcking - Back End -',
     description: 'App creada para realizar reservas de lugares de estacionamiento',
     githubLink: 'https://github.com/TjoseColedani/advanced-parking-back',
+  },
+  {
+    id: 2,
+    title: 'Advanced Parcking - Front End -',
+    description: 'App creada para realizar reservas de lugares de estacionamiento',
+    githubLink: '',
+  },
+  {
+    id: 3,
+    title: 'Reservas Restaurant - Back End -',
+    description: 'App creada para gestionar la disponibilidad de mesas en un restaurante - En Proceso',
+    githubLink: '',
+  },
+  {
+    id: 4,
+    title: 'Reservas Restaurant - Front End -',
+    description: 'App creada para gestionar la disponibilidad de mesas en un restaurante - En Proceso',
+    githubLink: '',
+  },
+  {
+    id: 5,
+    title: 'FitZone Gym App',
+    description: 'App creada para realizar reservas en un gym',
+    githubLink: 'https://github.com/TjoseColedani/Proyecto-Henry-M3',
   }
 ];
 
